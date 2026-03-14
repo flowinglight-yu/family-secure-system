@@ -1,0 +1,235 @@
+/* 全局底色与基础字体：作为锁屏页和主壳页的统一视觉基底。 */
+QWidget#Root {
+    background: #1a1a2e;
+    color: #ffffff;
+    font-family: "Source Han Sans CN", "Microsoft YaHei";
+}
+
+/* 全局标签默认态：为未单独指定对象名的 QLabel 提供统一前景色。 */
+QLabel {
+    color: #ffffff;
+}
+
+/* 页面标签统一色：约束主壳各业务页和卡片内部文字都保持白色可读性。 */
+QWidget#ShellPage QLabel,
+QWidget#DashboardPage QLabel,
+QWidget#VideoPage QLabel,
+QWidget#HistoryPage QLabel,
+QWidget#SettingsPage QLabel,
+QFrame#Card QLabel {
+    color: #ffffff;
+}
+
+/* 锁屏页整体背景：与主界面保持同一深色主题。 */
+QWidget#LockPage {
+    background: #1a1a2e;
+}
+
+/* 锁屏卡片：承载标题、密码圆点、数字键盘和提示文本。 */
+QFrame#LockCard {
+    background: #22243a;
+    border: 1px solid #2f3150;
+    border-radius: 8px;
+}
+
+/* 锁屏标题：对应 buildLockPage() 顶部的系统名称。 */
+QLabel#LockTitle {
+    font-size: 18px;
+    font-weight: 600;
+    color: #ffffff;
+}
+
+/* 锁屏圆点：对应密码输入位数反馈区。 */
+QLabel#LockDot {
+    font-size: 22px;
+    color: #ffffff;
+}
+
+/* 锁屏提示：默认提示、长度错误和密码错误都复用这个控件。 */
+QLabel#LockHint {
+    font-size: 14px;
+    color: #ffffff;
+}
+
+/* 锁屏错误态：密码错误时把提示文本切为红色。 */
+QLabel#LockHint[error="true"] {
+    color: #ff3333;
+}
+
+/* 锁屏数字键盘：对应 0~9、清除两个普通按键。 */
+QPushButton#KeypadButton {
+    min-height: 40px;
+    background: #2a2d45;
+    border: 1px solid #3a3f5c;
+    border-radius: 8px;
+    color: #ffffff;
+    font-size: 16px;
+}
+
+/* 锁屏数字键盘按下态：提供即时按压反馈，避免输入操作显得迟滞。 */
+QPushButton#KeypadButton:pressed {
+    background: #3a3f5c;
+}
+
+/* 主操作按钮：用于锁屏确认、设置页提交、历史窗口切换和视频控制。 */
+QPushButton#PrimaryButton {
+    min-height: 36px;
+    border: none;
+    border-radius: 8px;
+    color: #ffffff;
+    background: #00d4ff;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+/* 主操作按钮按下态：统一锁屏确认、历史切换和视频控制按钮的交互反馈。 */
+QPushButton#PrimaryButton:pressed {
+    background: #00b7dd;
+}
+
+/* 主壳页背景：承接导航、顶部状态栏、页面内容区和底栏。 */
+QWidget#ShellPage {
+    background: #1a1a2e;
+}
+
+/* 顶部报警条：用于展示阈值保存、人体检测、烟雾报警等全局提示。 */
+QFrame#AlarmBanner {
+    background: #ff6b35;
+}
+
+/* 告警危险态：当 smokeDanger 等危险条件触发时使用纯红背景。 */
+QFrame#AlarmBanner[danger="true"] {
+    background: #ff3333;
+}
+
+/* 报警条文本：对应顶部横条中的状态文案。 */
+QLabel#AlarmBannerText {
+    color: #ffffff;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+/* 左侧导航栏容器：包裹首页、视频、历史和设置四个入口。 */
+QFrame#NavBar {
+    background: #17182a;
+    border-right: 1px solid #2f3150;
+}
+
+/* 导航按钮默认态：未选中时透明，强调纵向导航结构。 */
+QPushButton#NavButton {
+    min-height: 44px;
+    border: none;
+    border-radius: 8px;
+    color: #ffffff;
+    background: transparent;
+    font-size: 12px;
+    font-weight: 600;
+}
+
+/* 导航激活态：对应当前 mainPageStack 所在页面。 */
+QPushButton#NavButton[active="true"] {
+    background: #203a52;
+    color: #00d4ff;
+}
+
+/* 顶栏和底栏：用于标题、云状态、时钟、网络和安全灯的统一卡片外观。 */
+QFrame#TopBar, QFrame#BottomBar {
+    background: #22243a;
+    border: 1px solid #2f3150;
+    border-radius: 8px;
+}
+
+/* 顶栏标题文本：对应主窗口顶部的系统名称。 */
+QLabel#TitleText {
+    font-size: 18px;
+    font-weight: 600;
+    color: #ffffff;
+}
+
+/* 顶栏状态文本：对应云端在线状态这类次级状态信息。 */
+QLabel#TopStatusText {
+    font-size: 12px;
+    font-weight: 500;
+    color: #ffffff;
+}
+
+/* 历史页与设置页背景层：让滚动区、内容区和图表区保持同一深色背景。 */
+QWidget#HistoryPage,
+QWidget#HistoryChartArea,
+QWidget#SettingsPage,
+QWidget#SettingsContent,
+QScrollArea#SettingsScrollArea,
+QScrollArea#SettingsScrollArea > QWidget > QWidget {
+    background: #1a1a2e;
+}
+
+/* 通用卡片：对应首页四宫格、视频控制区、历史页图表区和设置页各配置卡片。 */
+QFrame#Card {
+    background: #22243a;
+    border: 1px solid #2f3150;
+    border-radius: 8px;
+}
+
+/* 离线遮罩：覆盖温湿度、烟雾、人体和系统状态卡片中的实时内容区域。 */
+QLabel#OfflineMask {
+    background: rgba(80, 86, 105, 180);
+    color: #ffffff;
+    border-radius: 6px;
+    min-height: 30px;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+/* 大号数据值：对应首页温度、湿度、烟雾数值等核心指标。 */
+QLabel#ValueText {
+    font-size: 34px;
+    font-weight: 700;
+    color: #ffffff;
+}
+
+/* 辅助说明文本：对应数据来源、等级提示和补充说明。 */
+QLabel#HintText {
+    font-size: 13px;
+    color: #ffffff;
+}
+
+/* 底栏安全灯默认态：系统安全正常时显示绿色。 */
+QLabel#SafetyLamp {
+    border-radius: 6px;
+    background: #2ecc71;
+}
+
+/* 底栏安全灯注意态：人体检测或云离线时显示橙色。 */
+QLabel#SafetyLamp[warn="true"] {
+    background: #ff6b35;
+}
+
+/* 底栏安全灯危险态：烟雾报警时显示红色。 */
+QLabel#SafetyLamp[danger="true"] {
+    background: #ff3333;
+}
+
+/* 视频时间水印：覆盖在视频卡片顶部，用于显示当前帧时间。 */
+QLabel#VideoWatermark {
+    background: rgba(20, 20, 30, 160);
+    color: #ffffff;
+    padding: 4px 8px;
+    border-radius: 6px;
+}
+
+/* 视频画面容器：实时帧显示区域，无信号时也保持固定边框。 */
+QLabel#VideoFrame {
+    background: #111421;
+    border: 1px solid #2f3150;
+    border-radius: 8px;
+}
+
+/* 输入框：对应阈值设置和密码修改区域。 */
+QLineEdit {
+    min-height: 30px;
+    border: 1px solid #334155;
+    border-radius: 8px;
+    padding: 0 8px;
+    background: #1f2438;
+    color: #ffffff;
+}
